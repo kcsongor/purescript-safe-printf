@@ -1,0 +1,17 @@
+{
+  "name": "purescript-safe-printf",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^3.1.0",
+    "purescript-console": "^3.0.0",
+    "purescript-typelevel-prelude": "kcsongor/purescript-typelevel-prelude#8603ec35feafedee9e5b285091573ecb555f0215"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0"
+  }
+}
