@@ -5,16 +5,16 @@ import Type.Prelude (SProxy (..), class IsSymbol, reflectSymbol)
 import Type.Data.Symbol (class ConsSymbol)
 
 class Format (string :: Symbol) fun | string -> fun where
-  format :: SProxy string -> fun
+  format :: @string -> fun
 
 instance formatFFormat ::
   ( Parse string format
   , FormatF format fun
   ) => Format string fun where
-  format _ = formatF (FListProxy :: FListProxy format) ""
+  format _ = formatF @format ""
 
 class FormatF (format :: FList) fun | format -> fun where
-  formatF :: FListProxy format -> String -> fun
+  formatF :: @format -> String -> fun
 
 instance formatFNil :: FormatF FNil String where
   formatF _ = id
@@ -23,20 +23,20 @@ instance formatFConsD ::
   FormatF rest fun
   => FormatF (FCons D rest) (Int -> fun) where
   formatF _ str
-    = \i -> formatF (FListProxy :: FListProxy rest) (str <> show i)
+    = \i -> formatF @rest (str <> show i)
 
 instance formatFConsS ::
   FormatF rest fun
   => FormatF (FCons S rest) (String -> fun) where
   formatF _ str
-    = \s -> formatF (FListProxy :: FListProxy rest) (str <> s)
+    = \s -> formatF @rest (str <> s)
 
 instance formatFConsLit ::
   ( IsSymbol lit
   , FormatF rest fun
   ) => FormatF (FCons (Lit lit) rest) fun where
   formatF _ str
-    = formatF (FListProxy :: FListProxy rest) (str <> reflectSymbol (SProxy :: SProxy lit))
+    = formatF @rest (str <> reflectSymbol (SProxy :: SProxy lit))
 
 --------------------------------------------------------------------------------
 class Parse (string :: Symbol) (format :: FList) | string -> format
@@ -44,8 +44,6 @@ class Parse (string :: Symbol) (format :: FList) | string -> format
 foreign import kind FList
 foreign import data FNil :: FList
 foreign import data FCons :: Specifier -> FList -> FList
-
-data FListProxy (a :: FList) = FListProxy
 
 instance aNilParse :: Parse "" (FCons (Lit "") FNil)
 instance bConsParse :: (ConsSymbol h t string, Match h t fl) => Parse string fl

@@ -3,10 +3,7 @@
 A bare-bones proof of concept implementation of a typesafe printf-like interface
 where the format string is provided as a type-level string.
 
-This package uses a modified version of the compiler (and the typelevel-prelude
-package) that supports ` class ConsSymbol (head :: Symbol) (tail :: Symbol) (sym :: Symbol) | sym -> head tail, head tail -> sym ` - breaking a type-level string to its head and tail.
-
-It also relies on overlapping instances being chosen in alphabetical order.
+This library uses the unreleased 0.12 version of the compiler.
 
 ## Example
 
