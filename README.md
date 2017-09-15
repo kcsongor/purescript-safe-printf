@@ -8,7 +8,7 @@ This library uses the unreleased 0.12 version of the compiler.
 ## Example
 
 ```purescript
-format (SProxy :: SProxy "Hi %s! Your favourite number is %d") "Bill" 16
+format @"Hi %s! Your favourite number is %d" "Bill" 16
 ```
 
 produces the string
@@ -20,7 +20,7 @@ produces the string
 A function of the "right type" is generated from the format string, so that
 
 ```
-:t format (SProxy :: SProxy "Hi %s! Your favourite number is %d")
+:t format @"Hi %s! Your favourite number is %d"
 ```
 
 gives
