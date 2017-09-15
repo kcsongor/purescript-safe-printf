@@ -46,19 +46,17 @@ foreign import data FNil :: FList
 foreign import data FCons :: Specifier -> FList -> FList
 
 instance aNilParse :: Parse "" (FCons (Lit "") FNil)
-instance bConsParse :: (ConsSymbol h t string, Match h t fl) => Parse string fl
+else instance bConsParse :: (ConsSymbol h t string, Match h t fl) => Parse string fl
 
 class Match (head :: Symbol) (tail :: Symbol) (out :: FList) | head tail -> out
 
 instance aMatchFmt :: Match a "" (FCons (Lit a) FNil)
-
-instance bMatchFmt ::
+else instance bMatchFmt ::
   ( ConsSymbol h t s
   , MatchFmt h spec
   , Parse t rest
   ) => Match "%" s (FCons (Lit "") (FCons spec rest))
-
-instance cMatchFmt ::
+else instance cMatchFmt ::
   ( Parse s (FCons (Lit acc) r)
   , ConsSymbol o acc rest
   ) => Match o s (FCons (Lit rest) r)
