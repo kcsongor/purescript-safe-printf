@@ -7,11 +7,12 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^3.1.0",
-    "purescript-console": "^3.0.0",
-    "purescript-typelevel-prelude": "kcsongor/purescript-typelevel-prelude#8603ec35feafedee9e5b285091573ecb555f0215"
+    "purescript-prelude": "purescript/purescript-prelude#compiler/0.12",
+    "purescript-console": "purescript/purescript-console#compiler/0.12",
+    "purescript-typelevel-prelude": "purescript/purescript-typelevel-prelude#compiler/0.12"
   },
   "devDependencies": {
-    "purescript-psci-support": "^3.0.0"
+    "purescript-assert": "purescript/purescript-assert#compiler/0.12",
+    "purescript-psci-support": "purescript/purescript-psci-support#compiler/0.12"
   }
 }
