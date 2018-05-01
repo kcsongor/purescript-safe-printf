@@ -1,9 +1,13 @@
 module Test.Main where
 
 import Prelude
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
 
-main :: forall e. Eff (console :: CONSOLE | e) Unit
+import Data.Printf (format)
+import Effect (Effect)
+import Test.Assert (assert)
+import Type.Prelude (SProxy(..))
+
+main :: Effect Unit
 main = do
-  log "You should add some tests."
+  let formatted = format (SProxy :: SProxy "Hi %s! You are %d") "Bill" 12
+  assert $ formatted == "Hi Bill! You are 12"
