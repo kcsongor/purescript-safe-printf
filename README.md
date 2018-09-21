@@ -3,7 +3,7 @@
 A bare-bones proof of concept implementation of a typesafe printf-like interface
 where the format string is provided as a type-level string.
 
-This library uses the unreleased 0.12 version of the compiler.
+This library uses the 0.12 version of the compiler.
 
 ## Example
 
