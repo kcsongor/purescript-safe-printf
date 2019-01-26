@@ -1,5 +1,12 @@
 {
   "name": "purescript-safe-printf",
+  "homepage": "https://github.com/kcsongor/purescript-safe-printf",
+  "description": "Safe printf-like formatting in purescript",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kcsongor/purescript-safe-printf.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
