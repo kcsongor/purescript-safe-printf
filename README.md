@@ -1,5 +1,7 @@
 # purescript-safe-printf
 
+[![Build Status](https://travis-ci.org/kcsongor/purescript-safe-printf.svg?branch=master)](https://travis-ci.org/kcsongor/purescript-safe-printf)
+
 A bare-bones proof of concept implementation of a typesafe printf-like interface
 where the format string is provided as a type-level string.
 
