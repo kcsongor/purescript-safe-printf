@@ -30,5 +30,12 @@ gives
 String -> Int -> String
 ```
 
+You can also choose to use wildcards if you don't want to repeat yourself:
+
+```purs
+  let formatted = format (SProxy :: _ "Hi %s! You are %d") "Bill" 12
+```
+
+
 ## TODO
 Currently only "%d" and "%s" are supported, without any other fancy formatting.
