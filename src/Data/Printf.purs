@@ -1,5 +1,6 @@
 module Data.Printf where
 
+import Data.String.CodeUnits (singleton)
 import Prelude (identity, (<>), show)
 import Type.Prelude (class IsSymbol, SProxy(..), reflectSymbol)
 import Prim.Symbol as Symbol
@@ -18,6 +19,12 @@ class FormatF (format :: FList) fun | format -> fun where
 
 instance formatFNil :: FormatF FNil String where
   formatF _ = identity
+
+instance formatFConsC ::
+  FormatF rest fun
+  => FormatF (FCons C rest) (Char -> fun) where
+  formatF _ str
+    = \c -> formatF (FProxy :: FProxy rest) (str <> singleton c)
 
 instance formatFConsD ::
   FormatF rest fun
@@ -64,11 +71,13 @@ else instance cMatchFmt ::
   ) => Match o s (FCons (Lit rest) r)
 
 class MatchFmt (head :: Symbol) (out :: Specifier) | head -> out
+instance matchFmtC :: MatchFmt "c" C
 instance matchFmtD :: MatchFmt "d" D
 instance matchFmtS :: MatchFmt "s" S
 
 -- TODO: add more of these...
 foreign import kind Specifier
+foreign import data C :: Specifier
 foreign import data D :: Specifier
 foreign import data S :: Specifier
 foreign import data Lit :: Symbol -> Specifier

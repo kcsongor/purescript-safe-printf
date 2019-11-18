@@ -5,12 +5,12 @@
 A bare-bones proof of concept implementation of a typesafe printf-like interface
 where the format string is provided as a type-level string.
 
-This library uses the 0.12 version of the compiler.
+This library uses the 0.13.5 version of the compiler.
 
 ## Example
 
 ```purescript
-format (SProxy :: SProxy "Hi %s! Your favourite number is %d") "Bill" 16
+format (SProxy :: SProxy "Hi %s! Yo%cr favourite number is %d") "Bill" 'u' 16
 ```
 
 produces the string
@@ -22,12 +22,12 @@ produces the string
 A function of the "right type" is generated from the format string, so that
 
 ```
-:t format (SProxy :: SProxy "Hi %s! Your favourite number is %d")
+:t format (SProxy :: SProxy "Hi %s! Yo%cr favourite number is %d")
 ```
 
 gives
 ```
-String -> Int -> String
+String -> Char -> Int -> String
 ```
 
 You can also choose to use wildcards if you don't want to repeat yourself:
@@ -38,4 +38,4 @@ You can also choose to use wildcards if you don't want to repeat yourself:
 
 
 ## TODO
-Currently only "%d" and "%s" are supported, without any other fancy formatting.
+Currently only "%c", "%d" and "%s" are supported, without any other fancy formatting.

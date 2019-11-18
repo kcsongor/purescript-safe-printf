@@ -16,7 +16,8 @@
   "dependencies": {
     "purescript-prelude": "^4.1.1",
     "purescript-console": "^4.2.0",
-    "purescript-typelevel-prelude": "^5.0.1"
+    "purescript-typelevel-prelude": "^5.0.1",
+    "purescript-strings": "^4.0.1"
   },
   "devDependencies": {
     "purescript-assert": "^4.1.0",
