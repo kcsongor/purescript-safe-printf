@@ -14,12 +14,12 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^4.1.0",
+    "purescript-prelude": "^4.1.1",
     "purescript-console": "^4.2.0",
-    "purescript-typelevel-prelude": "^4.0.0"
+    "purescript-typelevel-prelude": "^5.0.1"
   },
   "devDependencies": {
-    "purescript-assert": "^4.0.0",
+    "purescript-assert": "^4.1.0",
     "purescript-psci-support": "^4.0.0"
   }
 }
